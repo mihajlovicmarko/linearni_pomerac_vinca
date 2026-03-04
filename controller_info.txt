@@ -1,0 +1,331 @@
+=== REQUEST RESULTS ===
+RequestAbnormalMoveDetectionEnabled: ok
+RequestAmpOutParameters: ok
+RequestClosedLoopParameters: ok
+RequestClosedLoopTarget: ok
+RequestCurrentPosition: ok
+RequestExternalTriggerConfig: ok
+RequestExternalTriggerParameters: ok
+RequestExternalTriggerTarget: ok
+RequestJogParameters: ok
+RequestOpenLoopMoveParameters: ok
+RequestPositionControlMode: ok
+RequestSettings: ok
+RequestStageAxisParams: ok
+RequestStatus: ok
+RequestStatusBits: ok
+
+=== READ RESULTS ===
+--- GetAbnormalMoveDetectionEnabled ---
+True
+--- GetAmpOutParameters ---
+===== BASIC INFO =====
+Python type: <class 'Thorlabs.MotionControl.GenericPiezoCLI.Piezo.AmpOutParameters'>
+CLR type: Thorlabs.MotionControl.GenericPiezoCLI.Piezo.AmpOutParameters
+Assembly: Thorlabs.MotionControl.GenericPiezoCLI, Version=1.14.59.26708, Culture=neutral, PublicKeyToken=null
+
+===== PROPERTIES =====
+ReverseAmplitude (System.Int16) = 100
+ForwardAmplitude (System.Int16) = 100
+Mode (Thorlabs.MotionControl.GenericPiezoCLI.Piezo.AmpOutParameters+AmpOutModes) = EnableReverse
+
+===== FIELDS =====
+
+===== METHODS =====
+ToNative
+Data
+get_Mode
+set_Mode
+get_ForwardAmplitude
+set_ForwardAmplitude
+get_ReverseAmplitude
+set_ReverseAmplitude
+PropertyList
+Equals
+GetHashCode
+GetType
+ToString
+
+===== PYTHON DIR =====
+['AmpOutModes', 'Data', 'Equals', 'Finalize', 'ForwardAmplitude', 'GetHashCode', 'GetType', 'MemberwiseClone', 'Mode', 'Overloads', 'PropertyList', 'ReferenceEquals', 'ReverseAmplitude', 'ToNative', 'ToString', '__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__overloads__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'get_ForwardAmplitude', 'get_Mode', 'get_ReverseAmplitude', 'set_ForwardAmplitude', 'set_Mode', 'set_ReverseAmplitude']
+--- GetClosedLoopParameters ---
+===== BASIC INFO =====
+Python type: <class 'Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2.ClosedLoopParams'>
+CLR type: Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2.ClosedLoopParams
+Assembly: Thorlabs.MotionControl.Benchtop.PiezoCLI, Version=1.14.59.26708, Culture=neutral, PublicKeyToken=null
+
+===== PROPERTIES =====
+Acceleration (System.UInt32) = 8000000
+Differential (System.UInt32) = 4000
+Integral (System.UInt32) = 100
+Proportional (System.UInt32) = 4096
+RefSpeed (System.UInt32) = 800000
+
+===== FIELDS =====
+
+===== METHODS =====
+ToNative
+get_RefSpeed
+set_RefSpeed
+get_Proportional
+set_Proportional
+get_Integral
+set_Integral
+get_Differential
+set_Differential
+get_Acceleration
+set_Acceleration
+Equals
+GetHashCode
+GetType
+ToString
+
+===== PYTHON DIR =====
+['Acceleration', 'Differential', 'Equals', 'Finalize', 'GetHashCode', 'GetType', 'Integral', 'MemberwiseClone', 'Overloads', 'Proportional', 'RefSpeed', 'ReferenceEquals', 'ToNative', 'ToString', '__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__overloads__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'get_Acceleration', 'get_Differential', 'get_Integral', 'get_Proportional', 'get_RefSpeed', 'set_Acceleration', 'set_Differential', 'set_Integral', 'set_Proportional', 'set_RefSpeed']
+--- GetClosedLoopTarget ---
+400
+--- GetCurrentPosition ---
+0
+--- GetExternalTriggerConfig ---
+===== BASIC INFO =====
+Python type: <class 'Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2.TriggerModes'>
+CLR type: Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2.TriggerModes
+Assembly: Thorlabs.MotionControl.Benchtop.PiezoCLI, Version=1.14.59.26708, Culture=neutral, PublicKeyToken=null
+
+===== PROPERTIES =====
+
+===== FIELDS =====
+value__ (System.UInt16) = 0
+Manual (Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2.TriggerModes) = Manual
+AnalogRising (Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2.TriggerModes) = AnalogRising
+AnalogFalling (Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2.TriggerModes) = AnalogFalling
+FixedStepRising (Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2.TriggerModes) = FixedStepRising
+FixedStepFalling (Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2.TriggerModes) = FixedStepFalling
+TwoPositionRising (Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2.TriggerModes) = TwoPositionRising
+TwoPositionFalling (Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2.TriggerModes) = TwoPositionFalling
+
+===== METHODS =====
+GetHashCode
+ToString
+ToString
+CompareTo
+ToString
+HasFlag
+GetTypeCode
+Equals
+ToString
+GetType
+
+===== PYTHON DIR =====
+['AnalogFalling', 'AnalogRising', 'CompareTo', 'Equals', 'Finalize', 'FixedStepFalling', 'FixedStepRising', 'Format', 'GetHashCode', 'GetName', 'GetNames', 'GetType', 'GetTypeCode', 'GetUnderlyingType', 'GetValues', 'HasFlag', 'IsDefined', 'Manual', 'MemberwiseClone', 'Overloads', 'Parse', 'ReferenceEquals', 'ToObject', 'ToString', 'TryParse', 'TwoPositionFalling', 'TwoPositionRising', '__and__', '__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__float__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__index__', '__init__', '__init_subclass__', '__int__', '__invert__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__or__', '__overloads__', '__rand__', '__reduce__', '__reduce_ex__', '__repr__', '__ror__', '__rxor__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__xor__', 'value__']
+--- GetExternalTriggerParameters ---
+===== BASIC INFO =====
+Python type: <class 'Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2.TriggerParameters'>
+CLR type: Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2.TriggerParameters
+Assembly: Thorlabs.MotionControl.Benchtop.PiezoCLI, Version=1.14.59.26708, Culture=neutral, PublicKeyToken=null
+
+===== PROPERTIES =====
+AnalogOutOffset (System.Decimal) = 0
+AnalogOutGain (System.Decimal) = 1
+AnalogInOffset (System.Decimal) = 0
+AnalogInGain (System.Decimal) = 1
+RisePosition2 (System.UInt32) = 0
+RisePosition1 (System.UInt32) = 0
+FallPosition2 (System.UInt32) = 0
+FallPosition1 (System.UInt32) = 0
+FallFixedStep (System.UInt32) = 0
+RiseFixedStep (System.UInt32) = 0
+
+===== FIELDS =====
+
+===== METHODS =====
+ToNative
+get_RiseFixedStep
+set_RiseFixedStep
+get_FallFixedStep
+set_FallFixedStep
+get_FallPosition1
+set_FallPosition1
+get_FallPosition2
+set_FallPosition2
+get_RisePosition1
+set_RisePosition1
+get_RisePosition2
+set_RisePosition2
+get_AnalogInGain
+set_AnalogInGain
+get_AnalogInOffset
+set_AnalogInOffset
+get_AnalogOutGain
+set_AnalogOutGain
+get_AnalogOutOffset
+set_AnalogOutOffset
+Equals
+GetHashCode
+GetType
+ToString
+
+===== PYTHON DIR =====
+['AnalogInGain', 'AnalogInOffset', 'AnalogOutGain', 'AnalogOutOffset', 'Equals', 'FallFixedStep', 'FallPosition1', 'FallPosition2', 'Finalize', 'GetHashCode', 'GetType', 'MemberwiseClone', 'Overloads', 'ReferenceEquals', 'RiseFixedStep', 'RisePosition1', 'RisePosition2', 'ToNative', 'ToString', '__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__overloads__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'get_AnalogInGain', 'get_AnalogInOffset', 'get_AnalogOutGain', 'get_AnalogOutOffset', 'get_FallFixedStep', 'get_FallPosition1', 'get_FallPosition2', 'get_RiseFixedStep', 'get_RisePosition1', 'get_RisePosition2', 'set_AnalogInGain', 'set_AnalogInOffset', 'set_AnalogOutGain', 'set_AnalogOutOffset', 'set_FallFixedStep', 'set_FallPosition1', 'set_FallPosition2', 'set_RiseFixedStep', 'set_RisePosition1', 'set_RisePosition2']
+--- GetExternalTriggerTarget ---
+0
+--- GetJogParameters ---
+===== BASIC INFO =====
+Python type: <class 'Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2.JogParameters'>
+CLR type: Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2.JogParameters
+Assembly: Thorlabs.MotionControl.Benchtop.PiezoCLI, Version=1.14.59.26708, Culture=neutral, PublicKeyToken=null
+
+===== PROPERTIES =====
+ClosedLoopAcceleration (System.Int32) = 8000000
+ClosedLoopSpeed (System.Int32) = 800000
+ClosedLoopStepSize (System.Int32) = 1000000
+OpenLoopAcceleration (System.Int32) = 1000
+OpenLoopStepRate (System.Int32) = 2000
+OpenLoopStepSize (System.Int32) = 2000
+Mode (Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2.JogParameters+JogModes) = Step
+
+===== FIELDS =====
+
+===== METHODS =====
+ToNative
+get_Mode
+set_Mode
+get_OpenLoopStepSize
+set_OpenLoopStepSize
+get_OpenLoopStepRate
+set_OpenLoopStepRate
+get_OpenLoopAcceleration
+set_OpenLoopAcceleration
+get_ClosedLoopStepSize
+set_ClosedLoopStepSize
+get_ClosedLoopSpeed
+set_ClosedLoopSpeed
+get_ClosedLoopAcceleration
+set_ClosedLoopAcceleration
+PropertyList
+Equals
+GetHashCode
+GetType
+ToString
+
+===== PYTHON DIR =====
+['ClosedLoopAcceleration', 'ClosedLoopSpeed', 'ClosedLoopStepSize', 'Equals', 'Finalize', 'GetHashCode', 'GetType', 'JogModes', 'MemberwiseClone', 'Mode', 'OpenLoopAcceleration', 'OpenLoopStepRate', 'OpenLoopStepSize', 'Overloads', 'PropertyList', 'ReferenceEquals', 'ToNative', 'ToString', '__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__overloads__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'get_ClosedLoopAcceleration', 'get_ClosedLoopSpeed', 'get_ClosedLoopStepSize', 'get_Mode', 'get_OpenLoopAcceleration', 'get_OpenLoopStepRate', 'get_OpenLoopStepSize', 'set_ClosedLoopAcceleration', 'set_ClosedLoopSpeed', 'set_ClosedLoopStepSize', 'set_Mode', 'set_OpenLoopAcceleration', 'set_OpenLoopStepRate', 'set_OpenLoopStepSize']
+--- GetOpenLoopMoveParameters ---
+===== BASIC INFO =====
+Python type: <class 'Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2.OpenLoopMoveParams'>
+CLR type: Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2.OpenLoopMoveParams
+Assembly: Thorlabs.MotionControl.Benchtop.PiezoCLI, Version=1.14.59.26708, Culture=neutral, PublicKeyToken=null
+
+===== PROPERTIES =====
+StepSize (System.Int32) = 10000
+
+===== FIELDS =====
+
+===== METHODS =====
+ToNative
+get_StepSize
+set_StepSize
+Equals
+GetHashCode
+GetType
+ToString
+
+===== PYTHON DIR =====
+['Equals', 'Finalize', 'GetHashCode', 'GetType', 'MemberwiseClone', 'Overloads', 'ReferenceEquals', 'StepSize', 'ToNative', 'ToString', '__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__overloads__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'get_StepSize', 'set_StepSize']
+--- GetPDXC2Configuration ---
+requires arguments
+--- GetPositionControlMode ---
+===== BASIC INFO =====
+Python type: <class 'Thorlabs.MotionControl.GenericPiezoCLI.Piezo.PiezoControlModeTypes'>
+CLR type: Thorlabs.MotionControl.GenericPiezoCLI.Piezo.PiezoControlModeTypes
+Assembly: Thorlabs.MotionControl.GenericPiezoCLI, Version=1.14.59.26708, Culture=neutral, PublicKeyToken=null
+
+===== PROPERTIES =====
+
+===== FIELDS =====
+value__ (System.Int32) = 1
+OpenLoop (Thorlabs.MotionControl.GenericPiezoCLI.Piezo.PiezoControlModeTypes) = OpenLoop
+CloseLoop (Thorlabs.MotionControl.GenericPiezoCLI.Piezo.PiezoControlModeTypes) = CloseLoop
+OpenLoopSmooth (Thorlabs.MotionControl.GenericPiezoCLI.Piezo.PiezoControlModeTypes) = OpenLoopSmooth
+CloseLoopSmooth (Thorlabs.MotionControl.GenericPiezoCLI.Piezo.PiezoControlModeTypes) = CloseLoopSmooth
+
+===== METHODS =====
+GetHashCode
+ToString
+ToString
+CompareTo
+ToString
+HasFlag
+GetTypeCode
+Equals
+ToString
+GetType
+
+===== PYTHON DIR =====
+['CloseLoop', 'CloseLoopSmooth', 'CompareTo', 'Equals', 'Finalize', 'Format', 'GetHashCode', 'GetName', 'GetNames', 'GetType', 'GetTypeCode', 'GetUnderlyingType', 'GetValues', 'HasFlag', 'IsDefined', 'MemberwiseClone', 'OpenLoop', 'OpenLoopSmooth', 'Overloads', 'Parse', 'ReferenceEquals', 'ToObject', 'ToString', 'TryParse', '__and__', '__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__float__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__index__', '__init__', '__init_subclass__', '__int__', '__invert__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__or__', '__overloads__', '__rand__', '__reduce__', '__reduce_ex__', '__repr__', '__ror__', '__rxor__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__xor__', 'value__']
+--- GetSettings ---
+requires arguments
+--- GetStageAxisParams ---
+===== BASIC INFO =====
+Python type: <class 'Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2.StageAxisParams'>
+CLR type: Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2.StageAxisParams
+Assembly: Thorlabs.MotionControl.Benchtop.PiezoCLI, Version=1.14.59.26708, Culture=neutral, PublicKeyToken=null
+
+===== PROPERTIES =====
+MaxDeceleration (System.Int32) = 0
+MaxVelocity (System.Int32) = 0
+MaxAcceleration (System.Int32) = 10000000
+MaxPosition (System.Int32) = 10000000
+MinPosition (System.Int32) = -10000000
+CountsPerUnit (System.UInt32) = 1000000
+SerialNo (System.UInt32) = 43508502
+PartNo (System.String) = PDX1/M
+AxisId (System.UInt16) = 1
+StageId (System.UInt16) = 0
+
+===== FIELDS =====
+
+===== METHODS =====
+get_StageId
+set_StageId
+get_AxisId
+set_AxisId
+get_PartNo
+set_PartNo
+get_SerialNo
+set_SerialNo
+get_CountsPerUnit
+set_CountsPerUnit
+get_MinPosition
+set_MinPosition
+get_MaxPosition
+set_MaxPosition
+get_MaxAcceleration
+set_MaxAcceleration
+get_MaxVelocity
+set_MaxVelocity
+get_MaxDeceleration
+set_MaxDeceleration
+Equals
+GetHashCode
+GetType
+ToString
+
+===== PYTHON DIR =====
+['AxisId', 'CountsPerUnit', 'Equals', 'Finalize', 'GetHashCode', 'GetType', 'MaxAcceleration', 'MaxDeceleration', 'MaxPosition', 'MaxVelocity', 'MemberwiseClone', 'MinPosition', 'Overloads', 'PartNo', 'ReferenceEquals', 'SerialNo', 'StageId', 'ToString', '__class__', '__delattr__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__getstate__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__overloads__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', 'get_AxisId', 'get_CountsPerUnit', 'get_MaxAcceleration', 'get_MaxDeceleration', 'get_MaxPosition', 'get_MaxVelocity', 'get_MinPosition', 'get_PartNo', 'get_SerialNo', 'get_StageId', 'set_AxisId', 'set_CountsPerUnit', 'set_MaxAcceleration', 'set_MaxDeceleration', 'set_MaxPosition', 'set_MaxVelocity', 'set_MinPosition', 'set_PartNo', 'set_SerialNo', 'set_StageId']
+--- GetStatus ---
+AttributeError: 'InertiaStageController' object has no attribute 'GetStatus'
+--- GetStatusBits ---
+1024
+--- IsDeviceAvailable ---
+True
+--- IsPDXC2SettingsValid ---
+False
+--- IsSetControlModeActive ---
+True
+--- IsSettingsInitialized ---
+False
+--- IsSettingsKnown ---
+DeviceSettingsException: Device settings not initialized
+   at Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2.InertiaStageController.VerifySettings(Int32 functionDepth)
+   at Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2.InertiaStageController.get_IsSettingsKnown()
