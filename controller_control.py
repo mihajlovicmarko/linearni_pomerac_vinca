@@ -73,6 +73,7 @@ class PDXC2Controller:
 
     def connect(self):
         if self.dev is None:
+            ku.log_kinesis_dependency_source(self.logger, once=True)
             self.dev = ku.connect_first_device(poll_ms=self.poll_ms)
         return self.dev
 

@@ -5,9 +5,21 @@ import sys
 import time
 
 
-KINESIS_PATH = r"C:\Program Files\Thorlabs\Kinesis"
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+PROJECT_KINESIS_PATH = os.path.join(PROJECT_ROOT, "Dependencies", "Kinesis")
+FALLBACK_KINESIS_PATH = r"C:\Program Files\Thorlabs\Kinesis"
+KINESIS_PATH = os.environ.get("KINESIS_PATH", PROJECT_KINESIS_PATH)
+if "KINESIS_PATH" in os.environ:
+    KINESIS_SOURCE = "env"
+else:
+    KINESIS_SOURCE = "project-relative"
+if not os.path.isdir(KINESIS_PATH):
+    KINESIS_PATH = FALLBACK_KINESIS_PATH
+    KINESIS_SOURCE = "global-fallback"
+
 os.environ["PATH"] = KINESIS_PATH + ";" + os.environ.get("PATH", "")
-sys.path.append(KINESIS_PATH)
+if KINESIS_PATH not in sys.path:
+    sys.path.append(KINESIS_PATH)
 
 clr.AddReference("Thorlabs.MotionControl.DeviceManagerCLI")
 clr.AddReference("Thorlabs.MotionControl.Benchtop.PiezoCLI")
@@ -22,6 +34,24 @@ from Thorlabs.MotionControl.Benchtop.PiezoCLI.PDXC2 import (
 from Thorlabs.MotionControl.GenericPiezoCLI.Piezo import PiezoControlModeTypes
 
 logger = logging.getLogger(__name__)
+
+_KINESIS_SOURCE_LOGGED = False
+
+
+def log_kinesis_dependency_source(log=None, once=True):
+    global _KINESIS_SOURCE_LOGGED
+    if once and _KINESIS_SOURCE_LOGGED:
+        return
+
+    active_logger = log or logger
+    if KINESIS_SOURCE == "global-fallback":
+        active_logger.warning("Using global Kinesis dependencies from: %s", KINESIS_PATH)
+    else:
+        active_logger.info(
+            "Using %s Kinesis dependencies from: %s", KINESIS_SOURCE, KINESIS_PATH
+        )
+
+    _KINESIS_SOURCE_LOGGED = True
 
 REQUEST_METHODS = [
     "RequestAbnormalMoveDetectionEnabled",
