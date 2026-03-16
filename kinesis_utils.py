@@ -3,6 +3,7 @@ import clr
 import os
 import sys
 import time
+from ctypes import WinDLL, c_char_p, c_int, c_uint32, create_string_buffer
 
 
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -36,6 +37,7 @@ from Thorlabs.MotionControl.GenericPiezoCLI.Piezo import PiezoControlModeTypes
 logger = logging.getLogger(__name__)
 
 _KINESIS_SOURCE_LOGGED = False
+_PIEZO_DLL = None
 
 
 def log_kinesis_dependency_source(log=None, once=True):
@@ -157,13 +159,81 @@ def init_kinesis_path():
         sys.path.append(KINESIS_PATH)
 
 
-def connect_first_device(poll_ms=250):
-    DeviceManagerCLI.BuildDeviceList()
-    devices = list(DeviceManagerCLI.GetDeviceList())
+def _get_piezo_dll():
+    global _PIEZO_DLL
+    if _PIEZO_DLL is None:
+        dll_path = os.path.join(KINESIS_PATH, "Thorlabs.MotionControl.Benchtop.Piezo.dll")
+        _PIEZO_DLL = WinDLL(dll_path)
+        _PIEZO_DLL.TLI_ScanEthernetRange.argtypes = [
+            c_char_p,
+            c_char_p,
+            c_int,
+            c_int,
+            c_char_p,
+            c_uint32,
+        ]
+        _PIEZO_DLL.TLI_ScanEthernetRange.restype = c_int
+    return _PIEZO_DLL
+
+
+def build_device_list(build_attempts=2, build_retry_delay_s=2.0):
+    build_attempts = max(1, int(build_attempts))
+    for attempt in range(build_attempts):
+        DeviceManagerCLI.BuildDeviceList()
+        if attempt + 1 < build_attempts:
+            time.sleep(build_retry_delay_s)
+    return get_device_list()
+
+
+def get_device_list():
+    return [str(device) for device in DeviceManagerCLI.GetDeviceList()]
+
+
+def scan_ethernet_range(
+    start_ip,
+    end_ip,
+    port_no=40303,
+    open_timeout_ms=200,
+    buffer_size=4096,
+):
+    dll = _get_piezo_dll()
+    found = create_string_buffer(buffer_size)
+    result = dll.TLI_ScanEthernetRange(
+        str(start_ip).encode("ascii"),
+        str(end_ip).encode("ascii"),
+        int(port_no),
+        int(open_timeout_ms),
+        found,
+        buffer_size,
+    )
+    raw = found.value.decode("ascii", errors="ignore").strip()
+    addresses = [item.strip() for item in raw.split(",") if item.strip()]
+    return {"result": int(result), "addresses": addresses, "raw": raw}
+
+
+def connect_first_device(
+    poll_ms=250,
+    serial_no=None,
+    build_attempts=2,
+    build_retry_delay_s=2.0,
+):
+    devices = build_device_list(
+        build_attempts=build_attempts,
+        build_retry_delay_s=build_retry_delay_s,
+    )
     if not devices:
         raise RuntimeError("No Thorlabs devices detected")
 
-    serial = devices[0]
+    if serial_no is not None:
+        serial = str(serial_no)
+        if serial not in devices:
+            raise RuntimeError(
+                f"Requested Thorlabs device '{serial}' not found. "
+                f"Detected devices: {devices}"
+            )
+    else:
+        serial = devices[0]
+
     dev = InertiaStageController.CreateInertiaStageController(serial)
     dev.Connect(serial)
     dev.WaitForSettingsInitialized(5000)

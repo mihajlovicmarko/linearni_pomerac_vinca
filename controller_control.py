@@ -19,10 +19,31 @@ from System import Convert
 
 
 class PDXC2Controller:
-    def __init__(self, poll_ms=250, auto_connect=True, logger=None):
+    def __init__(
+        self,
+        poll_ms=250,
+        auto_connect=True,
+        logger=None,
+        serial_no=None,
+        device_ip=None,
+        scan_start_ip=None,
+        scan_end_ip=None,
+        device_port=40303,
+        open_timeout_ms=200,
+        build_attempts=2,
+        build_retry_delay_s=2.0,
+    ):
         self.logger = logger or logging.getLogger(__name__)
         self.poll_ms = poll_ms
         self.auto_connect = auto_connect
+        self.serial_no = serial_no
+        self.device_ip = device_ip
+        self.scan_start_ip = scan_start_ip
+        self.scan_end_ip = scan_end_ip
+        self.device_port = int(device_port)
+        self.open_timeout_ms = int(open_timeout_ms)
+        self.build_attempts = int(build_attempts)
+        self.build_retry_delay_s = float(build_retry_delay_s)
         self.dev = None
 
         # Defaults from controller_info.txt
@@ -74,7 +95,33 @@ class PDXC2Controller:
     def connect(self):
         if self.dev is None:
             ku.log_kinesis_dependency_source(self.logger, once=True)
-            self.dev = ku.connect_first_device(poll_ms=self.poll_ms)
+            if self.scan_start_ip and self.scan_end_ip:
+                scan = ku.scan_ethernet_range(
+                    start_ip=self.scan_start_ip,
+                    end_ip=self.scan_end_ip,
+                    port_no=self.device_port,
+                    open_timeout_ms=self.open_timeout_ms,
+                )
+                self.logger.info("Ethernet scan result: %s", scan)
+                if self.device_ip and self.device_ip not in scan["addresses"]:
+                    self.logger.warning(
+                        "Requested IP %s not found in scanned range %s-%s.",
+                        self.device_ip,
+                        self.scan_start_ip,
+                        self.scan_end_ip,
+                    )
+            if self.device_ip:
+                self.logger.info(
+                    "Using Ethernet-configured controller at %s:%s via Kinesis discovery.",
+                    self.device_ip,
+                    self.device_port,
+                )
+            self.dev = ku.connect_first_device(
+                poll_ms=self.poll_ms,
+                serial_no=self.serial_no,
+                build_attempts=self.build_attempts,
+                build_retry_delay_s=self.build_retry_delay_s,
+            )
         return self.dev
 
     def disconnect(self):
@@ -136,6 +183,16 @@ class PDXC2Controller:
         if request:
             self.request_current_position(wait_s=wait_s)
         return dev.GetCurrentPosition()
+
+    def track_current_position(self, duration_s=5.0, sample_s=0.25, as_units=False):
+        end_time = time.time() + float(duration_s)
+        samples = []
+        while time.time() < end_time:
+            counts = self.get_current_position(request=True, wait_s=min(sample_s, 0.1))
+            value = self.counts_to_units(counts) if as_units else counts
+            samples.append(value)
+            time.sleep(sample_s)
+        return samples
 
     def read_control_mode(self):
         dev = self._require_dev()
